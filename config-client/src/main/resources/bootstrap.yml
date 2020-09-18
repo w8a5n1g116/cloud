@@ -1,0 +1,27 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: config-client
+  cloud:
+    config: #Config客户端配置
+      #uri: http://localhost:8905 #配置中心地址
+      label: dev #分支名称
+      name: config #配置文件名称
+      profile: dev #启用配置后缀名称
+      #从注册中心获取ConfigServer
+      discovery:
+        enabled: true
+        service-id: config-security-server
+      username: stopno
+      password: 123456
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'refresh'
